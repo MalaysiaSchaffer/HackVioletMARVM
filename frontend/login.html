@@ -55,19 +55,6 @@
           console.log('No user signed in');
         }
       });
-
-      // Logout functionality
-      const logoutButton = document.getElementById('logout-button');
-      logoutButton.addEventListener('click', async () => {
-        try {
-          await signOut(auth);
-          console.log('User signed out');
-          document.getElementById('user-info').style.display = 'none';
-          document.getElementById('login-form').style.display = 'block';
-        } catch (error) {
-          console.error('Error signing out:', error);
-        }
-      });
     </script>
 
     <style>
@@ -154,17 +141,18 @@
         margin-top: 20px;
       }
   
-      .logout-btn {
-        background-color: #DC3545;
+      .start-tasks-btn {
+        background-color: #5f01b1;
         margin-top: 10px;
         border-radius: 5px;
         padding: 10px 20px;
         color: white;
         cursor: pointer;
+        text-decoration: none;
       }
   
-      .logout-btn:hover {
-        background-color: #c82333;
+      .start-tasks-btn:hover {
+        background-color: #371357;
       }
       </style>
   </head>
@@ -182,7 +170,7 @@
       </div>
       <div id="user-info" class="user-info" style="display: none;">
         <h2>Welcome, <span id="user-name"></span>!</h2>
-        <button id="logout-button" class="logout-btn">Logout</button>
+        <a href="tasking/mytasks.html" class="start-tasks-btn">Start Tasks</a>
       </div>
     </div>
   </body>
