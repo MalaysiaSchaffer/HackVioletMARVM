@@ -32,10 +32,8 @@ def generate_label():
         max_completion_tokens=10
     )
 
-    print(response.choices[0].message.content)
+    return response.choices[0].message.content
 
 
 
-print("hi")
 generate_label()
-print("done")
