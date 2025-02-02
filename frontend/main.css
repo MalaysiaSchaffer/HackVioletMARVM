@@ -1,6 +1,6 @@
 /* Style Sheet */
 
-h1{
+.main {
     text-align: center;
     font-family: "VT323", serif;
     padding-top: 50px;
@@ -8,6 +8,19 @@ h1{
     font-size: 100px;
     color: white;
     line-height: 400px;
+}
+
+.abttitle {
+    text-align: center;
+    font-family: "VT323", serif;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    font-size: 100px;
+    color: white;
+}
+
+.abttext{
+    border: #260046;
 }
 
 header {
