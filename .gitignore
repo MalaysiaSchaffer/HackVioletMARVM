@@ -32,4 +32,5 @@ coverage/
 # Environment & Configs
 .env
 .env.local
-config.json  # If you store sensitive config files
+config.json
+firebaseconfig.js
