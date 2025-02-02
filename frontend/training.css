@@ -20,7 +20,7 @@ body {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    background: url('./ameen_cursor/PixelCursor.png') no-repeat center/contain;
+    background: url('./ameen_cursor/SpaceShipCursorNonPixelTest.png') no-repeat center/contain;
 }
 
 .inner-box {
