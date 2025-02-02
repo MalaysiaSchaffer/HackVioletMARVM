@@ -1,34 +1,54 @@
 import sqlite3
 
 def create_connection(db_file):
-    """ create a database connection to the SQLite database """
+    """Establish a connection to the SQLite database.
+    
+    This function attempts to connect to the SQLite database specified by db_file.
+    If the connection fails, it logs an error message.
+    """
     conn = None
     try:
         conn = sqlite3.connect(db_file)
         return conn
     except sqlite3.Error as e:
-        print(e)
+        print(f"Error connecting to database {db_file}: {e}")
     return conn
 
 def create_table(conn, create_table_sql):
-    """ create a table from the create_table_sql statement """
+    """Create a table using the provided SQL statement.
+    
+    This function executes the SQL statement to create a table in the database.
+    If the table creation fails, it logs an error message.
+    """
     try:
         c = conn.cursor()
         c.execute(create_table_sql)
     except sqlite3.Error as e:
-        print(e)
+        print(f"Error creating table: {e}")
 
 def insert_data(conn, data):
-    """ insert data into the image_labels table """
+    """Insert data into the image_labels table.
+    
+    This function inserts a new record into the image_labels table.
+    It logs an error message if the insertion fails.
+    """
     sql = ''' INSERT INTO image_labels(image_url, ai_label, human_1_score, human_2_score, human_3_score, human_1_comment, human_2_comment, human_3_comment, ai_accuracy)
               VALUES(?,?,?,?,?,?,?,?,?) '''
     cur = conn.cursor()
-    cur.execute(sql, data)
-    conn.commit()
-    return cur.lastrowid
+    try:
+        cur.execute(sql, data)
+        conn.commit()
+        return cur.lastrowid
+    except sqlite3.Error as e:
+        print(f"Error inserting data: {e}")
+        return None
 
 def insert_multiple_records(conn, data_list):
-    """ insert multiple records into the image_labels table """
+    """Insert multiple records into the image_labels table.
+    
+    This function inserts multiple records into the image_labels table.
+    It logs an error message if the insertion fails.
+    """
     sql = ''' INSERT INTO image_labels(image_url, ai_label, human_1_score, human_2_score, human_3_score, human_1_comment, human_2_comment, human_3_comment, ai_accuracy)
               VALUES(?,?,?,?,?,?,?,?,?) '''
     cur = conn.cursor()
@@ -36,24 +56,39 @@ def insert_multiple_records(conn, data_list):
         cur.executemany(sql, data_list)
         conn.commit()
     except sqlite3.Error as e:
-        print(e)
+        print(f"Error inserting multiple records: {e}")
 
 def validate_data(data):
-    """ validate data before insertion """
+    """Validate data before insertion.
+    
+    This function checks that all fields in the data are of valid types.
+    It raises a ValueError if any field has an invalid type.
+    """
     if not all(isinstance(field, (str, int, float)) for field in data):
-        raise ValueError("Invalid data types")
+        raise ValueError("Invalid data types in: " + str(data))
     return True
 
 def query_records(conn, query):
-    """ query records from the image_labels table """
+    """Query records from the image_labels table.
+    
+    This function executes a query to fetch records from the image_labels table.
+    It logs an error message if the query fails.
+    """
     cur = conn.cursor()
-    cur.execute(query)
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    try:
+        cur.execute(query)
+        rows = cur.fetchall()
+        for row in rows:
+            print(row)
+    except sqlite3.Error as e:
+        print(f"Error querying records: {e}")
 
 def update_record(conn, data):
-    """ update a record in the image_labels table """
+    """Update a record in the image_labels table.
+    
+    This function updates an existing record in the image_labels table.
+    It logs an error message if the update fails.
+    """
     sql = ''' UPDATE image_labels
               SET image_url = ?,
                   ai_label = ?,
@@ -70,24 +105,21 @@ def update_record(conn, data):
         cur.execute(sql, data)
         conn.commit()
     except sqlite3.Error as e:
-        print(e)
+        print(f"Error updating record: {e}")
 
 def delete_record(conn, image_id):
-    """ delete a record from the image_labels table """
+    """Delete a record from the image_labels table.
+    
+    This function deletes a record from the image_labels table.
+    It logs an error message if the deletion fails.
+    """
     sql = 'DELETE FROM image_labels WHERE image_id=?'
     cur = conn.cursor()
     try:
         cur.execute(sql, (image_id,))
         conn.commit()
     except sqlite3.Error as e:
-        print(e)
-
-    """ verify the inserted data """
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM image_labels")
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
+        print(f"Error deleting record: {e}")
 
 def main():
     database = "astroannotate.db"
@@ -116,9 +148,6 @@ def main():
         # insert example data
         data = ('uploads/image1.jpg', 'cat', 1, 0, 1, 'Looks correct', 'I think it\'s a dog', 'Agree with AI', 85.0)
         insert_data(conn, data)
-
-        # verify data
-        verify_data(conn)
 
         # close connection
         conn.close()
