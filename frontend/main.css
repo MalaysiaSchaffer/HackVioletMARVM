@@ -1,6 +1,6 @@
 /* Style Sheet */
 
-h1{
+.main {
     text-align: center;
     font-family: "VT323", serif;
     padding-top: 50px;
@@ -8,6 +8,19 @@ h1{
     font-size: 100px;
     color: white;
     line-height: 400px;
+}
+
+.abttitle {
+    text-align: center;
+    font-family: "VT323", serif;
+    padding-top: 50px;
+    padding-bottom: 0px;
+    font-size: 100px;
+    color: white;
+}
+
+.abttext{
+    border: #260046;
 }
 
 header {
@@ -126,5 +139,31 @@ nav.navbar {
     font-size: 35px;
     font-family: "Orbitron", serif;
     padding-top: 0%;
+}   
+
+.div-container {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%; /* Div takes up 50% of the screen width */
+     /* Fixed height */
+    padding: 20px; /* Adds padding inside the div */
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+    border: 2px solid white; /* Border around the div */
+    text-align: center; /* Center text horizontally */
+    overflow: hidden; /* Hides any content that exceeds the div size */
+    place-items: center;
+    align-content: center;  
+    border-radius: 15px;
 }
 
+
+.div-container p{
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: white;
+    display: grid;
+    place-items: center;
+    align-content: center;
+}
