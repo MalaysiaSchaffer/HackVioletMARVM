@@ -1,83 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image with Radio Buttons</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Accuracy Feedback</title>
     <style>
-        body {
-            display: grid;
-            grid-template-rows: auto auto 1fr auto;
-            gap: 20px;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        #image-container {
+      body {
+        background-color: #12123b;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      .container {
+        width: 50%;
+        margin: 50px auto;
+        background-color: #1a1a4a;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+      .image-container {
+        background-color: black;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .buttons {
+        margin: 20px 0;
+      }
+      button {
+        background-color: #7d7de6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #5a5ad8;
+      }
+      .feedback {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .submit {
+        background-color: #4caf50;
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+      .submit:hover {
+        background-color: #45a049;
+      }
+      #labels-container {
             text-align: center;
         }
-        #radio-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        #comment-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #comment-box textarea {
-            width: 100%;
-            max-width: 600px;
-            height: 100px;
-            margin-top: 10px;
-        }
-        #labels-container {
-            text-align: center;
-        }
-        #labels-list {
+      #labels-list {
             list-style-type: none;
             padding: 0;
         }
     </style>
-</head>
-<body>
-    <form onsubmit="return validateForm()">
-        <div id="image-container">
-            <!-- Image will be loaded here from the database -->
-            <img id="database-image" src="" alt="Image from Database">
-        </div>
-        <div id="radio-buttons">
-            <label>
-                <input type="radio" name="response" value="yes"> Yes
-            </label>
-            <label>
-                <input type="radio" name="response" value="no"> No
-            </label>
-            <label>
-                <input type="radio" name="response" value="dont-know"> I don't know
-            </label>
-        </div>
-        <div id="comment-box">
-            <label for="comments">Comments (mandatory):</label>
-            <textarea id="comments" name="comments" required></textarea>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
-
-    <div id="labels-container">
-        <h2>Labels</h2>
+  </head>
+  <body style="background-image: url(./stars.svg); zoom: 100%">
+    <div class="container">
+      <div class="image-container">
+        <img id="database-image" src="" alt="Image from Database">
+      </div>
+      <div id="labels-container">
+        <h2>AI Metadata Labels:</h2>
         <ul id="labels-list"></ul>
+    </div>
+      <div class="buttons">
+        <button>Yes</button>
+        <button>No</button>
+        <button>Unsure</button>
+      </div>
+      <input
+        type="text"
+        class="feedback"
+        placeholder="How accurate is the AI? Was the response correct?"
+      />
+      <button class="submit">Submit</button>
     </div>
 
     <script>
-        function validateForm() {
-            const comments = document.getElementById('comments').value;
-            if (comments.trim() === "") {
-                alert("Please enter a comment.");
-                return false;
-            }
-            return true;
-        }
 
         // Fetch labels from the API and display them
         async function fetchLabels() {
@@ -99,5 +112,5 @@
         // Call the fetchLabels function when the page loads
         window.onload = fetchLabels;
     </script>
-</body>
+  </body>
 </html>
