@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Accuracy Feedback</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        /* General Page Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #12123b;
+            background-size: 100vw 100vh;
+            color: white;
+            font-family: "Orbitron", sans-serif;
+            text-align: center;
+        }
+
+        /* Navbar Styling */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background-color: #260046;
+        }
+
+        .list {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .kid {
+            margin-left: 2rem;
+            color: white;
+            font-size: 20px;
+            padding: 15px 20px;
+            font-family: "Orbitron", serif;
+            text-decoration: none;
+        }
+
+        .kid:hover {
+            background-color: #371357;
+        }
+
+        /* Main Container */
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: rgba(26, 26, 74, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            border: 5px solid #5f01b1;
+            box-shadow: 0 0 20px rgba(95, 1, 177, 0.8);
+        }
+
+        /* Image Styling */
+        .image-container {
+            background-color: black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #5f01b1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            font-family: "VT323", monospace;
+        }
+
+        button:hover {
+            background-color: #371357;
+        }
+
+        /* Feedback Input */
+        .feedback {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 16px;
+            font-family: "Orbitron", sans-serif;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Submit Button */
+        .submit {
+            background-color: #4caf50;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .submit:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Tag */
+        .tag {
+            text-align: center;
+            color: white;
+            opacity: 80%;
+            font-size: 35px;
+            font-family: "Orbitron", serif;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Feedback Section -->
+    <div class="container">
+        <h1>AI Accuracy Feedback</h1>
+        <div class="image-container">
+            <img src="./premium_photo-1664474619075-644dd191935f.jpeg" alt="Random Image">
+        </div>
+        <div class="buttons">
+            <button>Yes</button>
+            <button>No</button>
+            <button>Unsure</button>
+        </div>
+        <input type="text" class="feedback" placeholder="How accurate is the AI? Was the response correct?">
+        <button class="submit">Submit</button>
+    </div>
+
+</body>
+</html>
