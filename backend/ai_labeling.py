@@ -24,7 +24,7 @@ def generate_label():
                     },
                     {
                         "type": "image_url",
-                        "image_url": {"url": "https://images.pexels.com/photos/20787/pexels-photo.jpg?cs=srgb&dl=pexels-kmerriman-20787.jpg&fm=jpg"},  
+                        "image_url": {"url": "https://i.redd.it/8bu29396j2a21.jpg"},  
                     },
                 ],
             }
@@ -36,4 +36,4 @@ def generate_label():
 
 
 
-generate_label()
+print(generate_label())
